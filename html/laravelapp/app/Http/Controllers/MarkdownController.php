@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Markdown;
 use Illuminate\Http\Request;
 
 class MarkdownController extends Controller
@@ -13,6 +14,18 @@ class MarkdownController extends Controller
 
     public function test()
     {
-        return "tesuto";
+        $m = Markdown::first();
+        $editedText = '編集しました。';
+        if (!$m) {
+            $m = new Markdown;
+            $m->text = 'テキストです。';
+            $m->save();
+        } else {
+            if ($m->text !== $editedText) {
+                $m->text = $editedText;
+                $m->save();
+            }
+        }
+        return $m->text;
     }
 }
