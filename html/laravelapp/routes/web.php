@@ -18,3 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/markdown', [MarkdownController::class, 'index']);
+Route::get('/markdown/test', [MarkdownController::class, 'test']);

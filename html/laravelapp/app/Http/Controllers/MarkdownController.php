@@ -10,4 +10,9 @@ class MarkdownController extends Controller
     {
         return "インデックス";
     }
+
+    public function test()
+    {
+        return "tesuto";
+    }
 }
