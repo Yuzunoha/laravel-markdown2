@@ -19,8 +19,6 @@ down:
 	docker-compose down
 bash:
 	docker-compose exec app bash
-mysql:
-	docker-compose exec mysql bash -c 'mysql -u root -proot docker_db'
 
 nginxproxy-up:
 	docker-compose -f docker-compose-nginxproxy.yml up -d
