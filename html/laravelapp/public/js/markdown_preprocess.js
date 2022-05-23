@@ -20,6 +20,7 @@ const addStyleForPre = (pre) => {
         "overflow-x": "auto",
         "-webkit-overflow-scrolling": "touch",
         "box-shadow": "2px 2px 4px gray",
+        "background-color": "#fff",
     };
     const keys = Object.keys(a);
     keys.forEach((key) => {
