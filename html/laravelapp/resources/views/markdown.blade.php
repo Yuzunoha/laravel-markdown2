@@ -12,7 +12,7 @@
         {{ $compiledText }}
         {{ Form::open(['url' => 'markdown/store', 'method' => 'post']) }}
         {{ Form::token() }}
-        {{ Form::textarea('textarea1', $rawText, ['class' => 'form-control', 'rows' => '30']) }}
+        {{ Form::textarea('textarea1', $rawText, ['class' => 'form-control', 'rows' => '30', 'cols' => '80']) }}
         {{ Form::submit('上書き', ['class' => 'btn btn-primary btn-lg']) }}
         {{ Form::close() }}
     </div>
