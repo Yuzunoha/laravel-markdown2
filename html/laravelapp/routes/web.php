@@ -14,10 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn () => redirect('markdown'));
 Route::get('markdown', [MarkdownController::class, 'index']);
-Route::get('markdown/test', [MarkdownController::class, 'test']);
 Route::post('markdown/store', [MarkdownController::class, 'store']);
 Route::get('markdown/setsample', [MarkdownController::class, 'setsample']);
