@@ -18,5 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('markdown', [MarkdownController::class, 'index']);
-Route::get('/markdown/test', [MarkdownController::class, 'test']);
-Route::post('/markdown/store', [MarkdownController::class, 'store']);
+Route::get('markdown/test', [MarkdownController::class, 'test']);
+Route::post('markdown/store', [MarkdownController::class, 'store']);
+Route::get('markdown/setsample', [MarkdownController::class, 'setsample']);
