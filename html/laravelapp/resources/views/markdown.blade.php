@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
 </head>
 
-<body>
+<body style="background-color: #FFFFEF;">
     <div>
         {{ $compiledText }}
         {{ Form::open(['url' => 'markdown/store', 'method' => 'post']) }}
