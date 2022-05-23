@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Markdown;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Markdown as MailMarkdown;
 
 class MarkdownController extends Controller
 {
     public function index()
     {
-        $compiledText = '変換されたテキスト';
-        $rawText = '生テキスト';
+        $rawText = '# タイトル';
+        $compiledText = MailMarkdown::parse($rawText);
         return view('markdown', compact('compiledText', 'rawText'));
     }
 
