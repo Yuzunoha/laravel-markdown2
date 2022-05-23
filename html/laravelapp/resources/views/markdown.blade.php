@@ -7,10 +7,10 @@
 
 <body>
     <div>
-        {{ $markdowntext ?? 'データが存在しない。' }}
+        {{ $compiledText ?? 'データが存在しない。' }}
         {{ Form::open(['url' => 'markdown/store', 'method' => 'post']) }}
         {{ Form::token() }}
-        {{ Form::textarea('textarea1', $rawtext ?? '', ['class' => 'form-control',  'rows' => '80', 'cols' => '120']) }}
+        {{ Form::textarea('textarea1', $rawText ?? 'データが存在しない。', ['class' => 'form-control',  'rows' => '80', 'cols' => '120']) }}
         {{ Form::submit('上書き', ['class' => 'btn btn-success btn-lg']) }}
         {{ Form::close() }}
     </div>

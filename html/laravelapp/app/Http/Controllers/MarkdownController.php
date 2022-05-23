@@ -9,8 +9,9 @@ class MarkdownController extends Controller
 {
     public function index()
     {
-        return view('markdown');
-        return "インデックス";
+        $compiledText = '変換されたテキスト';
+        $rawText = '生テキスト';
+        return view('markdown', compact('compiledText', 'rawText'));
     }
 
     public function test()
