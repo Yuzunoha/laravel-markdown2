@@ -9,6 +9,7 @@ class MarkdownController extends Controller
 {
     public function index()
     {
+        return view('markdown');
         return "インデックス";
     }
 
@@ -27,5 +28,11 @@ class MarkdownController extends Controller
             }
         }
         return $m->text;
+    }
+
+    public function store(Request $request)
+    {
+        dd($request);
+        return "aaa";
     }
 }

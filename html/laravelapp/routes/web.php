@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 Route::get('/markdown', [MarkdownController::class, 'index']);
 Route::get('/markdown/test', [MarkdownController::class, 'test']);
+Route::post('/markdown/store', [MarkdownController::class, 'store']);
