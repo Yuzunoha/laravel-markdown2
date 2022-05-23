@@ -1,28 +1,27 @@
 /**
- * langから始まるクラス文字列を変換する関数
+ * langから始まるクラスを処理する
  *
  * language-PHp -> lang-php
  * language-js -> lang-js
  * language-mermaid -> mermaid
  */
-const convertLanguageClass = (str) => {
-    // language-mermaid -> mermaid
-    if ("language-mermaid" === str) {
-        console.log(str + "を変換します");
-        return "mermaid";
-    }
-    // language-PHp -> lang-php
-    return "lang-" + str.trim().split("-")[1].toLowerCase();
-};
-
-/**
- * langから始まるクラスを処理する
- */
 const codes = document.querySelectorAll("[class^='lang']"); // langから始まるクラス
 for (const code of codes) {
-    const newLangClass = convertLanguageClass(code.classList[0]);
+    // language-mermaid, language-pHp
+    const oldLangClass = code.classList[0];
+
+    // codeタグをpreタグに変換する
     const pre = code.parentNode;
     pre.textContent = code.textContent; // codeタグは消える
-    // pre.classList.add('prettyprint', newLangClass, 'linenums');
-    pre.classList.add("mermaid");
+
+    // cssを処理する
+    if ("language-mermaid" === oldLangClass) {
+        /* mermaid js */
+        pre.classList.add("mermaid");
+    } else {
+        /* prettyprint */
+        // language-PHp -> lang-php
+        const lang = "lang-" + oldLangClass.trim().split("-")[1].toLowerCase();
+        pre.classList.add("prettyprint", lang, "linenums");
+    }
 }
