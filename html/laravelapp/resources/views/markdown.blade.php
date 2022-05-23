@@ -19,6 +19,12 @@
     </div>
     <script src="{{ asset('js/markdown_preprocess.js') }}"></script>
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true
+        });
+    </script>
 </body>
 
 </html>
