@@ -10,7 +10,8 @@ class MarkdownController extends Controller
 {
     public function index()
     {
-        $rawText = '# タイトル';
+        $m = Markdown::find(1);
+        $rawText = $m->text ?? '';
         $compiledText = MailMarkdown::parse($rawText);
         return view('markdown', compact('compiledText', 'rawText'));
     }
@@ -32,9 +33,19 @@ class MarkdownController extends Controller
         return $m->text;
     }
 
+    protected function _update(string $text)
+    {
+        $m = Markdown::find(1);
+        if (!$m) {
+            $m = new Markdown;
+        }
+        $m->text = $text;
+        $m->save();
+    }
+
     public function store(Request $request)
     {
-        dd($request);
-        return "aaa";
+        $this->_update($request->textarea1 ?? '');
+        return redirect('markdown');
     }
 }
