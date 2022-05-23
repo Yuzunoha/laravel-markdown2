@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MarkdownController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/markdown', 'MarkdowntextController@index');
+Route::get('/markdown', [MarkdownController::class, 'index']);

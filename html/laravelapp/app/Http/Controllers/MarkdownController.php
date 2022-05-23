@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class MarkdownController extends Controller
 {
-    //
+    public function index()
+    {
+        return "インデックス";
+    }
 }
