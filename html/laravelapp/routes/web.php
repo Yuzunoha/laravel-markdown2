@@ -19,4 +19,4 @@ Route::get('/', fn () => redirect('markdown'));
 Route::get('markdown', [MarkdownController::class, 'index']);
 Route::post('markdown/store', [MarkdownController::class, 'store']);
 Route::get('markdown/setsample', [MarkdownController::class, 'setsample']);
-Route::get('go', [GoController::class, 'index']);
+Route::any('go', [GoController::class, 'index']);
