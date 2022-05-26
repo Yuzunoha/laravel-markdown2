@@ -8,9 +8,10 @@ class GoController extends Controller
 {
     public function index()
     {
-        return [
+        $data = [
             'eng' => 'requested!!!',
             'jpn' => 'リクエストが来ましたよ。'
         ];
+        return $this->responseJson($data);
     }
 }
