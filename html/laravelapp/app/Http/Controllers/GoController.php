@@ -6,12 +6,9 @@ use Illuminate\Http\Request;
 
 class GoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = [
-            'eng' => 'requested!!!',
-            'jpn' => 'リクエストが来ましたよ。'
-        ];
+        $data = $request->toArray();
         return $this->responseJson($data);
     }
 }
