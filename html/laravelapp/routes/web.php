@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoController;
 use App\Http\Controllers\MarkdownController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ Route::get('/', fn () => redirect('markdown'));
 Route::get('markdown', [MarkdownController::class, 'index']);
 Route::post('markdown/store', [MarkdownController::class, 'store']);
 Route::get('markdown/setsample', [MarkdownController::class, 'setsample']);
+Route::get('go', [GoController::class, 'index']);
