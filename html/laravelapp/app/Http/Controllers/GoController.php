@@ -8,7 +8,13 @@ class GoController extends Controller
 {
     public function index(Request $request)
     {
-        $data = $request->toArray();
+        $file = $request->file("file");
+        $size = filesize($file);
+        $data = [
+            'request' => $request,
+            'file' => $file,
+            'size' => $size,
+        ];
         return $this->responseJson($data);
     }
 }
