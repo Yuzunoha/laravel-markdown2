@@ -1,4 +1,4 @@
 *
 !public/
 !.gitignore
-!codegym/
+!codegym/tests/DiceTest.php
