@@ -20,7 +20,9 @@ class GoController extends Controller
 
     public function test(Request $request)
     {
-        $ret = exec('echo "エコーだよー"');
-        return $ret;
+        // docker run --rm -v /home/yuzunoha/git/github/laravel-markdown2/html/laravelapp/storage/app/codegym:/app jitesoft/phpunit phpunit tests/DiceTest.php
+        exec('sudo docker run --rm -v ${HOST_REPOSITORY_ROOTDIR}/html/laravelapp/storage/app/codegym:/app jitesoft/phpunit phpunit tests/DiceTest.php', $output);
+        dd($output);
+        return $output;
     }
 }
