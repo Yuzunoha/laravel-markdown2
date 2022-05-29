@@ -11,9 +11,9 @@ class GoController extends Controller
         $file = $request->file("file");
         $size = filesize($file);
         $data = [
-            'request' => $request,
             'file' => $file,
             'size' => $size,
+            '$request->all()' => $request->all(),
         ];
         return $this->responseJson($data);
     }
