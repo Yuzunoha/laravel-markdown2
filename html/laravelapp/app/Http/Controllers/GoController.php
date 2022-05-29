@@ -20,6 +20,7 @@ class GoController extends Controller
 
     public function test(Request $request)
     {
-        return "testです。";
+        $ret = exec('echo "エコーだよー"');
+        return $ret;
     }
 }
