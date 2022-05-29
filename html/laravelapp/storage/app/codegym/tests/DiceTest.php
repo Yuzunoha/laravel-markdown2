@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 
-require('Dice.php');
 
 class DiceTest extends TestCase
 {
@@ -12,8 +11,10 @@ class DiceTest extends TestCase
     {
         // docker run --rm -v $(pwd):/app --env CODEGYM_VALUE1=/var/lib/mysql/的なね/こーどじむ jitesoft/phpunit phpunit DiceTest.php
         // test
-        var_dump(getenv('CODEGYM_VALUE1'));
-        echo PHP_EOL;
+        echo exec('pwd') . PHP_EOL;
+        echo exec('ls tests') . PHP_EOL;
+        echo exec('ls 1') . PHP_EOL;
+        require_once('1/Dice.php');
         $this->dice = new Dice();
     }
 
