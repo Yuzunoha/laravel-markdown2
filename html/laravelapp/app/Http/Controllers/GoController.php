@@ -21,8 +21,16 @@ class GoController extends Controller
     public function test(Request $request)
     {
         // docker run --rm -v /home/yuzunoha/git/github/laravel-markdown2/html/laravelapp/storage/app/codegym:/app jitesoft/phpunit phpunit tests/DiceTest.php
-        exec('sudo docker run --rm -v ${HOST_REPOSITORY_ROOTDIR}/html/laravelapp/storage/app/codegym:/app jitesoft/phpunit phpunit tests/DiceTest.php', $output);
-        dd($output);
-        return $output;
+        $s = 'sudo docker run --rm';
+        $s .= ' -v ${HOST_REPOSITORY_ROOTDIR}/html/laravelapp/storage/app/codegym:/app';
+        $s .= ' jitesoft/phpunit phpunit tests/DiceTest.php';
+
+        exec($s, $output);
+
+        $r = '';
+        foreach ($output as $l) {
+            $r .= $l . PHP_EOL;
+        }
+        return $r;
     }
 }
