@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 class GoController extends Controller
 {
+    private function arrayToStr(array $a): string
+    {
+        $r = '';
+        foreach ($a as $l) {
+            $r .= $l . PHP_EOL;
+        }
+        return $r;
+    }
+
     public function index(Request $request)
     {
         $file = $request->file("file");
@@ -27,10 +36,6 @@ class GoController extends Controller
 
         exec($s, $output);
 
-        $r = '';
-        foreach ($output as $l) {
-            $r .= $l . PHP_EOL;
-        }
-        return $r;
+        return $this->arrayToStr($output);
     }
 }
