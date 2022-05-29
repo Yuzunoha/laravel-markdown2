@@ -5,6 +5,7 @@ services:
       context: ./docker/app
     volumes:
       - ./html:/var/www/html
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       TZ: Asia/Tokyo
       VIRTUAL_HOST: markdown.yuzunoha.net
