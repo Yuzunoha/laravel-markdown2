@@ -17,4 +17,9 @@ class GoController extends Controller
         ];
         return $this->responseJson($data);
     }
+
+    public function test(Request $request)
+    {
+        return "testです。";
+    }
 }
