@@ -8,5 +8,6 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       TZ: Asia/Tokyo
+      HOST_REPOSITORY_ROOTDIR: ${PWD}
     ports:
       - 80:80
