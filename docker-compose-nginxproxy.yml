@@ -8,6 +8,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       TZ: Asia/Tokyo
+      HOST_REPOSITORY_ROOTDIR: ${PWD}
       VIRTUAL_HOST: markdown.yuzunoha.net
       LETSENCRYPT_HOST: markdown.yuzunoha.net
       LETSENCRYPT_EMAIL: studysteadystandby@gmail.com
