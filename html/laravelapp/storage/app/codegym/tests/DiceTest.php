@@ -11,9 +11,6 @@ class DiceTest extends TestCase
     {
         // docker run --rm -v $(pwd):/app --env CODEGYM_VALUE1=/var/lib/mysql/的なね/こーどじむ jitesoft/phpunit phpunit DiceTest.php
         // test
-        echo exec('pwd') . PHP_EOL;
-        echo exec('ls tests') . PHP_EOL;
-        echo exec('ls 1') . PHP_EOL;
         require_once('1/Dice.php');
         $this->dice = new Dice();
     }
@@ -49,5 +46,10 @@ class DiceTest extends TestCase
     {
         $dice->roll();
         $this->assertTrue(1 <= $dice->getNumber() && 6 >= $dice->getNumber());
+    }
+
+    public function test1()
+    {
+        $this->assertEquals(1, 1);
     }
 }
