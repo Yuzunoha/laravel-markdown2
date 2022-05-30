@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GoController extends Controller
 {
@@ -57,10 +58,12 @@ class GoController extends Controller
         }
 
         // ファイルがあるかどうかチェックする
-        if (!isset($request->file("file"))) {
+        if (!$request->file("file")) {
             $fnThrow("ファイルを添付してください");
         }
-        // ファイルを保存する
-        $request->file("file")->storeAs('', "ファイル名");
+        // ファイルを保存する。"fizzbuzz.php", "fukuri.php", ...
+        $fileNameTarget = $taskKey . ".php";
+        $toFileDir = 'codegym/' . Auth::id(); // storage/app/codegym/1
+        $request->file("file")->storeAs($toFileDir, $fileNameTarget);
     }
 }
