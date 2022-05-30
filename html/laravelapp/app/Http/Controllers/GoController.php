@@ -18,6 +18,8 @@ class GoController extends Controller
     public function index(Request $request)
     {
         $file = $request->file("file");
+        // TODO
+        $file->storeAs('codegym/1', 'fizzbuzz123');
         $size = filesize($file);
         $data = [
             'file' => $file,
