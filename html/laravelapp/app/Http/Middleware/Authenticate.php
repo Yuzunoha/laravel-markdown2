@@ -22,7 +22,7 @@ class Authenticate extends Middleware
 
     protected function unauthenticated($request, array $guards)
     {
-        $msg = '認証に失敗しました。アクセストークンを確認してください' . PHP_EOL;
+        $msg = '認証に失敗しました。アクセストークンを確認してください';
         throw new HttpResponseException(response($msg, 401));
     }
 }
