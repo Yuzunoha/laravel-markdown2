@@ -27,4 +27,5 @@ Route::middleware([
 ])->group(function () {
     Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
     Route::get('codegym-token', [UserController::class, 'codegymToken']);
+    Route::get('me', [UserController::class, 'me']);
 });

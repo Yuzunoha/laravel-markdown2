@@ -25,4 +25,9 @@ class UserController extends Controller
         /* トークンを返却する */
         return $token->plainTextToken;
     }
+
+    public function me()
+    {
+        return Auth::user();
+    }
 }
