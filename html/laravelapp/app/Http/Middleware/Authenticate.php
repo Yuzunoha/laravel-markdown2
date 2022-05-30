@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class Authenticate extends Middleware
 {
@@ -14,8 +15,14 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
+        if (!$request->expectsJson()) {
             return route('login');
         }
+    }
+
+    protected function unauthenticated($request, array $guards)
+    {
+        $msg = '認証に失敗しました。アクセストークンを確認してください' . PHP_EOL;
+        throw new HttpResponseException(response($msg, 401));
     }
 }
