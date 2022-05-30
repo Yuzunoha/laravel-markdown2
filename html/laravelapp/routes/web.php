@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MarkdownController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +25,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('dashboard', fn () => view('dashboard'))->name('dashboard');
+    Route::get('codegym-token', [UserController::class, 'codegymToken']);
 });
