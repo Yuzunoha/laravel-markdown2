@@ -40,4 +40,27 @@ class GoController extends Controller
 
         return $this->arrayToStr($output);
     }
+
+    public function unittest(Request $request)
+    {
+        $fnThrow = fn (string $msg) => throw new HttpResponseException(response($msg, 400));
+
+        if (!isset($request->taskKey)) {
+            $fnThrow("taskKeyを指定してください");
+        }
+        $taskKey = $request->taskKey;
+        $taskKeys = ['fizzbuzz', "fukuri",];
+
+        // in_array(調べる値, 検索対象の配列
+        if (!in_array($taskKey, $taskKeys)) {
+            $fnThrow("不正なtaskKeyです: " . $taskKey);
+        }
+
+        // ファイルがあるかどうかチェックする
+        if (!isset($request->file("file"))) {
+            $fnThrow("ファイルを添付してください");
+        }
+        // ファイルを保存する
+        $request->file("file")->storeAs('', "ファイル名");
+    }
 }

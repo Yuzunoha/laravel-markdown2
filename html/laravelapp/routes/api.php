@@ -19,4 +19,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('me', [UserController::class, 'me']);
     Route::any('go', [GoController::class, 'index']);
     Route::any('go/test', [GoController::class, 'test']);
+    Route::any('go/unittest', [GoController::class, 'unittest']);
 });
