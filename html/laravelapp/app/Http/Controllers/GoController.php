@@ -67,8 +67,8 @@ class GoController extends Controller
         $request->file("file")->storeAs($toFileDir, $fileNameTarget);
 
         // ルートディレクトリを確保する "/var/www/html/laravelapp"
-        exec('cd ..; pwd', $output);
-        $laravelappDir = $output[0];
+        exec('cd ..; pwd', $outputCdPwd);
+        $laravelappDir = $outputCdPwd[0];
         // codegymDir "/var/www/html/laravelapp/storage/app/codegym"
         $codegymDir = $laravelappDir . '/storage/app/codegym';
         // volumeディレクトリを作る "/var/www/html/laravelapp/storage/app/codegym/1/volume"
