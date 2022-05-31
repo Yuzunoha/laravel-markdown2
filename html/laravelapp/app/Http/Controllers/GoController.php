@@ -80,5 +80,13 @@ class GoController extends Controller
         $targetFilePath = $codegymDir . '/' . Auth::id() . '/' . $taskKey . '.php';
         // テストファイルとテスト対象ファイルをvolumeにコピーする
         exec('cp ' . $testFilePath . ' ' . $targetFilePath . ' ' . $volumeDir);
+
+        // dockerを実行する
+        // docker run --rm -v /home/yuzunoha/git/github/laravel-markdown2/html/laravelapp/storage/app/codegym:/app jitesoft/phpunit phpunit tests/DiceTest.php
+        $s = 'sudo docker run --rm';
+        $s .= ' -v ${HOST_REPOSITORY_ROOTDIR}/html/laravelapp/storage/app/codegym/' . Auth::id() . '/volume:/app';
+        $s .= ' jitesoft/phpunit phpunit test_' . $taskKey . '.php';
+        exec($s, $output);
+        return $this->arrayToStr($output);
     }
 }
