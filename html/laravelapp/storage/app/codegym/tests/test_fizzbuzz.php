@@ -4,14 +4,28 @@ use PHPUnit\Framework\TestCase;
 
 class test_fizzbuzz extends TestCase
 {
-    protected function setUp(): void
+    public function test1()
     {
+        // require_once()で実行されるechoをテストする
+        $expectedString = $this->getExpectedString();
+        $this->expectOutputString($expectedString);
         require_once('fizzbuzz.php');
     }
 
-    public function test1()
+    protected function getExpectedString()
     {
-        echo "いい感じ" . PHP_EOL;
-        $this->assertEquals(1, 1);
+        $s = '';
+        for ($i = 1; $i <= 100; $i++) {
+            if ($i % 15 === 0) {
+                $s .= "3の倍数であり、5の倍数" . PHP_EOL;
+            } else if ($i % 3 === 0) {
+                $s .= "3の倍数" . PHP_EOL;
+            } else if ($i % 5 === 0) {
+                $s .= "5の倍数" . PHP_EOL;
+            } else {
+                $s .= $i . PHP_EOL;
+            }
+        }
+        return $s;
     }
 }
