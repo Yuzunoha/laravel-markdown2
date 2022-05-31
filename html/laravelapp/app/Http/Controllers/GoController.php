@@ -50,7 +50,7 @@ class GoController extends Controller
             $fnThrow("taskKeyを指定してください");
         }
         $taskKey = $request->taskKey;
-        $taskKeys = ['fizzbuzz', "fukuri",];
+        $taskKeys = ['fizzbuzz', 'kuku', 'fukuri', 'shiharai',];
 
         // in_array(調べる値, 検索対象の配列
         if (!in_array($taskKey, $taskKeys)) {
