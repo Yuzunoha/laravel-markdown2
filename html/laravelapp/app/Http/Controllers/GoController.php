@@ -65,5 +65,20 @@ class GoController extends Controller
         $fileNameTarget = $taskKey . ".php";
         $toFileDir = 'codegym/' . Auth::id(); // storage/app/codegym/1
         $request->file("file")->storeAs($toFileDir, $fileNameTarget);
+
+        // ルートディレクトリを確保する "/var/www/html/laravelapp"
+        exec('cd ..; pwd', $output);
+        $laravelappDir = $output[0];
+        // codegymDir "/var/www/html/laravelapp/storage/app/codegym"
+        $codegymDir = $laravelappDir . '/storage/app/codegym';
+        // volumeディレクトリを作る "/var/www/html/laravelapp/storage/app/codegym/1/volume"
+        $volumeDir = $codegymDir . '/' . Auth::id() . '/volume';
+        exec('mkdir ' . $volumeDir);
+        // テストファイル "/var/www/html/laravelapp/storage/app/codegym/tests/test_fizzbuzz.php"
+        $testFilePath = $codegymDir . '/tests/test_' . $taskKey . '.php';
+        // テスト対象ファイル
+        $targetFilePath = $codegymDir . '/' . Auth::id() . '/' . $taskKey . '.php';
+        // テストファイルとテスト対象ファイルをvolumeにコピーする
+        exec('cp ' . $testFilePath . ' ' . $targetFilePath . ' ' . $volumeDir);
     }
 }
