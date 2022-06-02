@@ -22,7 +22,7 @@ class test_fukuri extends TestCase
         $coefficient = 1.0 + ($rate / 100);
         $s = '';
         for ($i = 0; $i <= $length; $i++) {
-            $s += ($i . '年目：' . $amount . '円') . PHP_EOL;
+            $s .= ($i . '年目：' . $amount . '円') . PHP_EOL;
             $amount *= $coefficient;
         }
         return $s;
