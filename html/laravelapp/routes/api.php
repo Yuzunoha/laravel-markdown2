@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GoController;
+use App\Http\Controllers\ReactController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::any('go/test', [GoController::class, 'test']);
     Route::any('go/unittest', [GoController::class, 'unittest']);
 });
+
+Route::get('react/chapter9', [ReactController::class, 'chapter9']);
