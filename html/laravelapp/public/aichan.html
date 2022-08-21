@@ -1,5 +1,64 @@
-<html>
-    <body>
-        aiちゃん用のページ
-    </body>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body id="body">
+    <script>
+      const url = 'https://5gsopk5zny6kssuwijh5js6zom0hdxka.lambda-url.ap-northeast-1.on.aws/';
+      const p = console.log;
+
+      const getWeekKeys = () => {
+        const weekKeys = [];
+        for (let i = 0; i <= 10; i++) {
+          weekKeys[i] = `week${i}`;
+        }
+        return weekKeys;
+      };
+
+      const weekKeys = getWeekKeys();
+
+      const insertHeaderForTable = (table) => {
+        const tr = document.createElement('tr');
+        const items = ['name', ...weekKeys];
+        items.forEach((item) => {
+          const th = document.createElement('th');
+          th.textContent = item;
+          tr.appendChild(th);
+        });
+        table.appendChild(tr);
+      };
+
+      const table = document.createElement('table');
+      table.setAttribute('border', '1');
+
+      insertHeaderForTable(table);
+
+      // lambdaから情報を取得して各行を作成する
+      fetch(url)
+        .then((res) => res.json())
+        .then((json) => {
+          for (name of Object.keys(json)) {
+            const score = json[name].score;
+            const tr = document.createElement('tr');
+
+            const data = [];
+            data.push(name);
+            weekKeys.forEach((weekKey) => {
+              data.push(score[weekKey]);
+            });
+
+            data.forEach((d) => {
+              const td = document.createElement('td');
+              td.textContent = d;
+              tr.appendChild(td);
+            });
+
+            table.appendChild(tr);
+          }
+        });
+
+      document.getElementById('body').appendChild(table);
+    </script>
+  </body>
 </html>
