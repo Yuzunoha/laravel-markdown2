@@ -3,7 +3,7 @@
 use App\Http\Controllers\MarkdownController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\File;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +29,5 @@ Route::middleware([
     Route::get('codegym-token', [UserController::class, 'codegymToken']);
     Route::get('me', [UserController::class, 'me']);
 });
+
+Route::get('/aichan', fn () => File::get(public_path() . '/aichan.html'));
