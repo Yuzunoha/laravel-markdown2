@@ -8,6 +8,9 @@ class TestController extends Controller
 {
   public function req(Request $request)
   {
-    return $request;
+    return [
+      '$request->ip()' => $request->ip(),
+      '$_SERVER' => $_SERVER,
+    ];
   }
 }
