@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MarkdownController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
@@ -31,3 +32,4 @@ Route::middleware([
 });
 
 Route::get('/aichan', fn () => File::get(public_path() . '/aichan.html'));
+Route::get('/test/req', [TestController::class, 'req']);
